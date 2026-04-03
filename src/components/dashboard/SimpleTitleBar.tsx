@@ -118,14 +118,14 @@ const SimpleTitleBar = ({
     setTypedSubtitle("");
 
     const timer = window.setInterval(() => {
-      cursor += 2;
+      cursor += 1;
       const nextValue = displaySubtitle.slice(0, cursor);
       setTypedSubtitle(nextValue);
 
       if (cursor >= displaySubtitle.length) {
         window.clearInterval(timer);
       }
-    }, 14);
+    }, 20);
 
     return () => window.clearInterval(timer);
   }, [displaySubtitle, isMobileSubtitleOpen]);

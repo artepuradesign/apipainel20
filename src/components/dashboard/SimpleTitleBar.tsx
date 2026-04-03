@@ -170,11 +170,11 @@ const SimpleTitleBar = ({
           <div className="ml-auto flex items-center gap-3 min-w-0">
             {right ? right : null}
             <div className="min-w-0 text-right flex flex-col items-end gap-0">
-              <CardTitle className="text-sm md:text-lg leading-none m-0">
+              <CardTitle className="text-sm md:text-lg leading-none m-0 p-0">
                 <span className="truncate">{displayTitle}</span>
               </CardTitle>
               {displaySubtitle ? (
-                <p className="hidden sm:block text-xs md:text-sm lg:text-base text-muted-foreground mt-0 leading-none line-clamp-2 md:line-clamp-none">
+                <p className="hidden sm:block text-xs md:text-sm lg:text-base text-muted-foreground -mt-1 md:-mt-1 leading-none line-clamp-2 md:line-clamp-none">
                   {displaySubtitle}
                 </p>
               ) : null}

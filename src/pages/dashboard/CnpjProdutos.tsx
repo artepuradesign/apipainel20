@@ -918,13 +918,6 @@ const CnpjProdutos = () => {
         subtitle="Controle completo de produtos das empresas"
         useModuleMetadata={false}
         icon={<Package className="h-4 w-4 sm:h-5 sm:w-5" />}
-        right={
-          <>
-            <Button variant="ghost" size="sm" onClick={loadProdutos} disabled={loading} className="h-8 w-8 p-0">
-              <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
-            </Button>
-          </>
-        }
         onBack={() => navigate('/dashboard')}
       />
 

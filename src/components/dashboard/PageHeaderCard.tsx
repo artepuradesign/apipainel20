@@ -42,13 +42,15 @@ const PageHeaderCard: React.FC<PageHeaderCardProps> = ({
   ) : undefined;
 
   return (
-    <SimpleTitleBar
-      title={computedTitle}
-      subtitle={computedSubtitle}
-      right={extraNode}
-      onBack={() => (window.history.length > 1 ? navigate(-1) : navigate('/dashboard'))}
-      useModuleMetadata={false}
-    />
+    <div className="-mb-2 md:-mb-2">
+      <SimpleTitleBar
+        title={computedTitle}
+        subtitle={computedSubtitle}
+        right={extraNode}
+        onBack={() => (window.history.length > 1 ? navigate(-1) : navigate('/dashboard'))}
+        useModuleMetadata={false}
+      />
+    </div>
   );
 };
 

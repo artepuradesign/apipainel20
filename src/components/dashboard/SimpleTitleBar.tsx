@@ -205,7 +205,6 @@ const SimpleTitleBar = ({
               onMouseEnter={() => handleActionBalloonOpen("back")}
               className="rounded-full h-8 w-8 shrink-0"
               aria-label="Voltar"
-              title="Voltar"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
             </Button>
@@ -224,7 +223,6 @@ const SimpleTitleBar = ({
               onMouseEnter={() => handleActionBalloonOpen("refresh")}
               className="rounded-full h-8 w-8 shrink-0"
               aria-label="Atualizar página"
-              title="Atualizar página"
             >
               <RefreshCw className="h-3.5 w-3.5" />
             </Button>
@@ -242,7 +240,6 @@ const SimpleTitleBar = ({
             onMouseEnter={handleSubtitlePreviewOpen}
             className="rounded-full h-8 w-8 shrink-0"
             aria-label="Ajuda"
-            title="Ajuda"
           >
             <CircleHelp className="h-3.5 w-3.5" />
           </Button>

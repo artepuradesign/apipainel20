@@ -7,7 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
-import { ArrowLeft, Save, User, Heart, Phone, Mail, MapPin, FileText, CreditCard, DollarSign, TrendingUp, Camera, Globe, Plus, Trash2, Briefcase } from 'lucide-react';
+import { Save, User, Heart, Phone, Mail, MapPin, FileText, CreditCard, DollarSign, TrendingUp, Camera, Globe, Plus, Trash2, Briefcase } from 'lucide-react';
+import SimpleTitleBar from '@/components/dashboard/SimpleTitleBar';
 import { baseCpfService, BaseCpf } from '@/services/baseCpfService';
 import { formatCep, formatCpf, formatCnpj, formatPhone, formatDateOfBirth } from '@/utils/formatters';
 import MultiplePhotoUploader from '@/components/cpf/MultiplePhotoUploader';
@@ -1479,6 +1480,12 @@ const CadastrarCPF = () => {
 
   return (
     <div className="space-y-6">
+      <SimpleTitleBar
+        title="Cadastrar CPF"
+        subtitle="Preencha os dados completos para criar um novo registro de CPF"
+        onBack={() => navigate('/dashboard')}
+        useModuleMetadata={false}
+      />
       <form onSubmit={handleSubmit} className="space-y-6">
 
         {/* 1. Fotos */}

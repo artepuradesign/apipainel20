@@ -1243,19 +1243,19 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
           title={title}
           subtitle={subtitle}
           icon={<Icon className="h-5 w-5" />}
-          right={(
+          leftActions={isAgenda ? (
             <Button
               type="button"
               variant="outline"
               size="icon"
               onClick={isAgenda ? handleOpenAgendaModal : handleOpenNewClientLookupModal}
-              className="rounded-full h-9 w-9"
+              className="rounded-full h-8 w-8"
               aria-label={isAgenda ? 'Novo compromisso' : 'Consultar CPF para novo cliente'}
               title={isAgenda ? 'Novo compromisso' : 'Consultar CPF para novo cliente'}
             >
               <Plus className="h-4 w-4" />
             </Button>
-          )}
+          ) : undefined}
           onBack={() => navigate('/dashboard')}
         />
       ) : (

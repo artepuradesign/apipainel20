@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Package, RefreshCw, X } from "lucide-react";
+import { ArrowLeft, CircleHelp, Package, RefreshCw, X } from "lucide-react";
 import * as Icons from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useApiModules } from "@/hooks/useApiModules";
@@ -28,6 +28,7 @@ const SimpleTitleBar = ({
 }: SimpleTitleBarProps) => {
   const [isMobileSubtitleOpen, setIsMobileSubtitleOpen] = useState(false);
   const [typedSubtitle, setTypedSubtitle] = useState("");
+  const [hoveredAction, setHoveredAction] = useState<"back" | "refresh" | null>(null);
   const location = useLocation();
   const { modules } = useApiModules();
 
@@ -192,6 +193,8 @@ const SimpleTitleBar = ({
             variant="outline"
             size="icon"
             onClick={onBack}
+            onMouseEnter={() => setHoveredAction("back")}
+            onMouseLeave={() => setHoveredAction(null)}
             className="rounded-full h-8 w-8 shrink-0"
             aria-label="Voltar"
             title="Voltar"
@@ -199,15 +202,41 @@ const SimpleTitleBar = ({
             <ArrowLeft className="h-3.5 w-3.5" />
           </Button>
 
+          {hoveredAction === "back" ? (
+            <div className="hidden sm:block absolute top-full left-0 mt-2 rounded-md border border-border bg-popover px-2 py-1 text-xs text-popover-foreground shadow-sm z-10 whitespace-nowrap">
+              Voltar
+            </div>
+          ) : null}
+
           <Button
             variant="outline"
             size="icon"
             onClick={() => window.location.reload()}
+            onMouseEnter={() => setHoveredAction("refresh")}
+            onMouseLeave={() => setHoveredAction(null)}
             className="rounded-full h-8 w-8 shrink-0"
             aria-label="Atualizar página"
             title="Atualizar página"
           >
             <RefreshCw className="h-3.5 w-3.5" />
+          </Button>
+
+          {hoveredAction === "refresh" ? (
+            <div className="hidden sm:block absolute top-full left-10 mt-2 rounded-md border border-border bg-popover px-2 py-1 text-xs text-popover-foreground shadow-sm z-10 whitespace-nowrap">
+              Atualizar
+            </div>
+          ) : null}
+
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => setIsMobileSubtitleOpen((prev) => !prev)}
+            onMouseEnter={handleSubtitlePreviewOpen}
+            className="rounded-full h-8 w-8 shrink-0"
+            aria-label="Ajuda"
+            title="Ajuda"
+          >
+            <CircleHelp className="h-3.5 w-3.5" />
           </Button>
 
           {leftActions ? <div className="flex items-center gap-2 shrink-0">{leftActions}</div> : null}
@@ -216,19 +245,10 @@ const SimpleTitleBar = ({
             {right ? right : null}
             <div
               className="min-w-0 text-right flex flex-col items-end gap-0 relative"
-              onMouseEnter={handleSubtitlePreviewOpen}
             >
-              <button
-                type="button"
-                onClick={() => setIsMobileSubtitleOpen((prev) => !prev)}
-                onMouseEnter={handleSubtitlePreviewOpen}
-                className="text-right"
-                aria-label="Mostrar descrição do módulo"
-              >
-                <CardTitle className="text-base md:text-lg leading-none m-0 p-0">
-                  <span className="truncate">{displayTitle}</span>
-                </CardTitle>
-              </button>
+              <CardTitle className="text-base md:text-lg leading-none m-0 p-0">
+                <span className="truncate">{displayTitle}</span>
+              </CardTitle>
 
               {displaySubtitle ? (
                 <p className="hidden sm:block text-xs md:text-xs lg:text-xs text-muted-foreground -mt-1 md:-mt-1 leading-none whitespace-nowrap overflow-hidden text-ellipsis max-w-[420px]">

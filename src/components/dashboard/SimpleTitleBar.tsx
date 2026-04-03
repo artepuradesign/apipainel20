@@ -13,6 +13,7 @@ interface SimpleTitleBarProps {
   onBack: () => void;
   icon?: React.ReactNode;
   right?: React.ReactNode;
+  leftActions?: React.ReactNode;
   useModuleMetadata?: boolean;
 }
 
@@ -22,6 +23,7 @@ const SimpleTitleBar = ({
   onBack,
   icon,
   right,
+  leftActions,
   useModuleMetadata = true,
 }: SimpleTitleBarProps) => {
   const location = useLocation();
@@ -152,14 +154,16 @@ const SimpleTitleBar = ({
             <ArrowLeft className="h-3.5 w-3.5" />
           </Button>
 
+          {leftActions ? <div className="flex items-center gap-2 shrink-0">{leftActions}</div> : null}
+
           <div className="ml-auto flex items-center gap-3 min-w-0">
             {right ? right : null}
             <div className="min-w-0 text-right">
-              <CardTitle className="text-sm md:text-base">
+              <CardTitle className="text-sm md:text-lg">
                 <span className="truncate">{displayTitle}</span>
               </CardTitle>
               {displaySubtitle ? (
-                <p className="hidden sm:block text-xs md:text-sm text-muted-foreground mt-1 line-clamp-2 md:line-clamp-none">
+                <p className="hidden sm:block text-xs md:text-sm lg:text-base text-muted-foreground mt-1 line-clamp-2 md:line-clamp-none">
                   {displaySubtitle}
                 </p>
               ) : null}

@@ -232,7 +232,7 @@ const SimpleTitleBar = ({
                 >
                   <X className="h-3.5 w-3.5" />
                 </button>
-                <p className="text-xs text-popover-foreground leading-tight pr-1">{displaySubtitle}</p>
+                <p className="text-sm text-popover-foreground leading-tight pr-1">{displaySubtitle}</p>
               </div>
             </>
           ) : null}

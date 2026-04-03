@@ -115,7 +115,7 @@ const CnpjChatInteligente = () => {
   };
 
   return (
-    <div className="space-y-4 sm:space-y-6 px-1 sm:px-0 max-w-full overflow-x-hidden">
+    <div className="space-y-3 md:space-y-4 max-w-full overflow-x-hidden">
       <SimpleTitleBar
         title={currentModule?.title || 'CNPJ Chat Inteligente'}
         subtitle={currentModule?.description || 'Configure seu agente de IA para atendimento no WhatsApp'}

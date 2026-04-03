@@ -1959,7 +1959,7 @@ Todos os direitos reservados.`;
   };
 
   return (
-    <div className="space-y-4 md:space-y-6 max-w-full overflow-x-hidden">
+    <div className="space-y-3 md:space-y-4 max-w-full overflow-x-hidden">
       <div className="w-full">
         <SimpleTitleBar
           title="Consulta CPF Simples"

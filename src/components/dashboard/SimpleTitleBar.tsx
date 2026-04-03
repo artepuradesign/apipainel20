@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,6 +26,7 @@ const SimpleTitleBar = ({
   leftActions,
   useModuleMetadata = true,
 }: SimpleTitleBarProps) => {
+  const [isMobileSubtitleOpen, setIsMobileSubtitleOpen] = useState(false);
   const location = useLocation();
   const { modules } = useApiModules();
 
@@ -175,10 +176,24 @@ const SimpleTitleBar = ({
 
           <div className="ml-auto flex items-center gap-3 min-w-0">
             {right ? right : null}
-            <div className="min-w-0 text-right flex flex-col items-end gap-0">
-              <CardTitle className="text-base md:text-lg leading-none m-0 p-0">
-                <span className="truncate">{displayTitle}</span>
-              </CardTitle>
+            <div className="min-w-0 text-right flex flex-col items-end gap-0 relative">
+              <button
+                type="button"
+                onClick={() => setIsMobileSubtitleOpen((prev) => !prev)}
+                className="text-right"
+                aria-label="Mostrar descrição do módulo"
+              >
+                <CardTitle className="text-base md:text-lg leading-none m-0 p-0">
+                  <span className="truncate">{displayTitle}</span>
+                </CardTitle>
+              </button>
+
+              {displaySubtitle && isMobileSubtitleOpen ? (
+                <div className="sm:hidden absolute top-full right-0 mt-2 max-w-[220px] rounded-md border border-border bg-popover px-3 py-2 text-left shadow-md z-20">
+                  <p className="text-xs text-popover-foreground leading-tight">{displaySubtitle}</p>
+                </div>
+              ) : null}
+
               {displaySubtitle ? (
                 <p className="hidden sm:block text-xs md:text-xs lg:text-xs text-muted-foreground -mt-1 md:-mt-1 leading-none line-clamp-2 md:line-clamp-none">
                   {displaySubtitle}

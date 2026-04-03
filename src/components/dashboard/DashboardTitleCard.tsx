@@ -21,14 +21,16 @@ const DashboardTitleCard = ({
   const navigate = useNavigate();
 
   return (
-    <SimpleTitleBar
-      title={title}
-      subtitle={subtitle}
-      icon={icon}
-      right={right}
-      onBack={() => navigate(backTo)}
-      useModuleMetadata={false}
-    />
+    <div className="-mb-2 md:-mb-2">
+      <SimpleTitleBar
+        title={title}
+        subtitle={subtitle}
+        icon={icon}
+        right={right}
+        onBack={() => navigate(backTo)}
+        useModuleMetadata={false}
+      />
+    </div>
   );
 };
 

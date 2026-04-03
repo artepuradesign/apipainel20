@@ -1262,7 +1262,7 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
         <PageHeaderCard title={title} subtitle={subtitle} />
       )}
 
-      <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(340px,420px)]">
+      <div className={`grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_minmax(340px,420px)] ${isAgenda ? 'gap-2 md:gap-3' : 'gap-6'}`}>
         {!isAgenda ? (
         <Card>
             <CardHeader>
@@ -1783,8 +1783,8 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
           )}
           <CardContent className={isAgenda ? 'p-0 text-sm sm:text-base' : undefined}>
             {isAgenda ? (
-              <div className="space-y-4">
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-[minmax(0,1.4fr)_minmax(280px,1fr)] xl:grid-cols-[minmax(0,1.5fr)_minmax(280px,1fr)_minmax(280px,1fr)] xl:items-start">
+              <div className={isAgenda ? 'space-y-3 md:space-y-4' : 'space-y-4'}>
+                <div className={`grid grid-cols-1 md:grid-cols-[minmax(0,1.4fr)_minmax(280px,1fr)] xl:grid-cols-[minmax(0,1.5fr)_minmax(280px,1fr)_minmax(280px,1fr)] xl:items-start ${isAgenda ? 'gap-3 md:gap-4' : 'gap-4'}`}>
                   <div className="order-2 min-w-0 rounded-xl border border-border bg-card p-3 sm:p-4 shadow-sm md:order-1">
                     <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
                       <div>

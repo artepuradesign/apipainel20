@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Package } from "lucide-react";
+import { ArrowLeft, Package, RefreshCw } from "lucide-react";
 import * as Icons from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useApiModules } from "@/hooks/useApiModules";
@@ -154,6 +154,17 @@ const SimpleTitleBar = ({
             <ArrowLeft className="h-3.5 w-3.5" />
           </Button>
 
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => window.location.reload()}
+            className="rounded-full h-8 w-8 shrink-0"
+            aria-label="Atualizar página"
+            title="Atualizar página"
+          >
+            <RefreshCw className="h-3.5 w-3.5" />
+          </Button>
+
           {leftActions ? <div className="flex items-center gap-2 shrink-0">{leftActions}</div> : null}
 
           <div className="ml-auto flex items-center gap-3 min-w-0">
@@ -163,7 +174,7 @@ const SimpleTitleBar = ({
                 <span className="truncate">{displayTitle}</span>
               </CardTitle>
               {displaySubtitle ? (
-                <p className="hidden sm:block text-xs md:text-sm lg:text-base text-muted-foreground mt-1 line-clamp-2 md:line-clamp-none">
+                <p className="hidden sm:block text-xs md:text-sm lg:text-base text-muted-foreground mt-0.5 line-clamp-2 md:line-clamp-none">
                   {displaySubtitle}
                 </p>
               ) : null}

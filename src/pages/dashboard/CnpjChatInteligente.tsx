@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
-import { Bot, KeyRound, MessageSquareText, Save, Link as LinkIcon } from 'lucide-react';
+import { Bot, KeyRound, MessageSquareText, Save } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import { toast } from 'sonner';
 import SimpleTitleBar from '@/components/dashboard/SimpleTitleBar';
@@ -122,12 +122,6 @@ const CnpjChatInteligente = () => {
         icon={<ModuleIcon className="h-4 w-4 sm:h-5 sm:w-5" />}
         onBack={() => navigate('/dashboard/cnpj-produtos')}
         useModuleMetadata={false}
-        right={
-          <Button variant="outline" size="sm" onClick={() => navigate('/dashboard/cnpj-conexoes')}>
-            <LinkIcon className="mr-2 h-4 w-4" />
-            Ir para conexões
-          </Button>
-        }
       />
 
       <Card>

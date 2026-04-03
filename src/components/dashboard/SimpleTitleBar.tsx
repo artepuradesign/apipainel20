@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { ArrowLeft, CircleHelp, Package, RefreshCw, X } from "lucide-react";
 import * as Icons from "lucide-react";
 import { useLocation } from "react-router-dom";
@@ -28,7 +29,6 @@ const SimpleTitleBar = ({
 }: SimpleTitleBarProps) => {
   const [isMobileSubtitleOpen, setIsMobileSubtitleOpen] = useState(false);
   const [typedSubtitle, setTypedSubtitle] = useState("");
-  const [hoveredAction, setHoveredAction] = useState<"back" | "refresh" | null>(null);
   const location = useLocation();
   const { modules } = useApiModules();
 
@@ -189,43 +189,41 @@ const SimpleTitleBar = ({
     <Card className="bg-card border-border">
       <CardHeader className="px-3 py-3 md:px-4 md:py-3">
         <div className="relative flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={onBack}
-            onMouseEnter={() => setHoveredAction("back")}
-            onMouseLeave={() => setHoveredAction(null)}
-            className="rounded-full h-8 w-8 shrink-0"
-            aria-label="Voltar"
-            title="Voltar"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={onBack}
+                className="rounded-full h-8 w-8 shrink-0"
+                aria-label="Voltar"
+                title="Voltar"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Voltar</p>
+            </TooltipContent>
+          </Tooltip>
 
-          {hoveredAction === "back" ? (
-            <div className="hidden sm:block absolute top-full left-0 mt-2 rounded-md border border-border bg-popover px-2 py-1 text-xs text-popover-foreground shadow-sm z-10 whitespace-nowrap">
-              Voltar
-            </div>
-          ) : null}
-
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={() => window.location.reload()}
-            onMouseEnter={() => setHoveredAction("refresh")}
-            onMouseLeave={() => setHoveredAction(null)}
-            className="rounded-full h-8 w-8 shrink-0"
-            aria-label="Atualizar página"
-            title="Atualizar página"
-          >
-            <RefreshCw className="h-3.5 w-3.5" />
-          </Button>
-
-          {hoveredAction === "refresh" ? (
-            <div className="hidden sm:block absolute top-full left-10 mt-2 rounded-md border border-border bg-popover px-2 py-1 text-xs text-popover-foreground shadow-sm z-10 whitespace-nowrap">
-              Atualizar
-            </div>
-          ) : null}
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => window.location.reload()}
+                className="rounded-full h-8 w-8 shrink-0"
+                aria-label="Atualizar página"
+                title="Atualizar página"
+              >
+                <RefreshCw className="h-3.5 w-3.5" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Atualizar</p>
+            </TooltipContent>
+          </Tooltip>
 
           <Button
             variant="outline"

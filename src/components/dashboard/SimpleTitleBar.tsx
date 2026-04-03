@@ -180,7 +180,7 @@ const SimpleTitleBar = ({
                 <span className="truncate">{displayTitle}</span>
               </CardTitle>
               {displaySubtitle ? (
-                <p className="hidden sm:block text-xs md:text-sm lg:text-base text-muted-foreground -mt-1 md:-mt-1 leading-none line-clamp-2 md:line-clamp-none">
+                <p className="hidden sm:block text-xs md:text-xs lg:text-xs text-muted-foreground -mt-1 md:-mt-1 leading-none line-clamp-2 md:line-clamp-none">
                   {displaySubtitle}
                 </p>
               ) : null}

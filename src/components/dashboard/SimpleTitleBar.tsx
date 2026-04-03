@@ -176,7 +176,12 @@ const SimpleTitleBar = ({
 
           <div className="ml-auto flex items-center gap-3 min-w-0">
             {right ? right : null}
-            <div className="min-w-0 text-right flex flex-col items-end gap-0 relative">
+            <div
+              className="min-w-0 text-right flex flex-col items-end gap-0 relative"
+              onMouseEnter={() => {
+                if (displaySubtitle) setIsMobileSubtitleOpen(true);
+              }}
+            >
               <button
                 type="button"
                 onClick={() => setIsMobileSubtitleOpen((prev) => !prev)}

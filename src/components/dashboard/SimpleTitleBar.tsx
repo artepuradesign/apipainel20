@@ -159,7 +159,7 @@ const SimpleTitleBar = ({
   return (
     <Card className="bg-card border-border">
       <CardHeader className="px-3 py-3 md:px-4 md:py-3">
-        <div className="flex items-center gap-2">
+        <div className="relative flex items-center gap-2">
           <Button
             variant="outline"
             size="icon"
@@ -202,24 +202,6 @@ const SimpleTitleBar = ({
                 </CardTitle>
               </button>
 
-              {displaySubtitle && isMobileSubtitleOpen ? (
-                <div className="absolute top-full left-[50vw] sm:left-auto sm:right-0 -translate-x-1/2 sm:translate-x-0 mt-2 w-[320px] max-w-[calc(100vw-1rem)] rounded-md border border-border bg-popover px-4 py-3 text-left shadow-md z-20 overflow-visible">
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      setIsMobileSubtitleOpen(false);
-                    }}
-                    className="absolute -top-2 -right-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-border bg-popover text-popover-foreground shadow-sm z-10"
-                    aria-label="Fechar descrição"
-                    title="Fechar"
-                  >
-                    <X className="h-3.5 w-3.5" />
-                  </button>
-                  <p className="text-xs text-popover-foreground leading-tight pr-1">{displaySubtitle}</p>
-                </div>
-              ) : null}
-
               {displaySubtitle ? (
                 <p className="hidden sm:block text-xs md:text-xs lg:text-xs text-muted-foreground -mt-1 md:-mt-1 leading-none whitespace-nowrap overflow-hidden text-ellipsis max-w-[420px]">
                   {subtitlePreview}
@@ -228,6 +210,24 @@ const SimpleTitleBar = ({
             </div>
             {iconElement}
           </div>
+
+          {displaySubtitle && isMobileSubtitleOpen ? (
+            <div className="absolute top-full left-1/2 sm:left-auto sm:right-0 -translate-x-1/2 sm:translate-x-0 mt-2 w-[320px] max-w-[calc(100vw-1rem)] rounded-md border border-border bg-popover px-4 py-3 text-left shadow-md z-20 overflow-visible">
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setIsMobileSubtitleOpen(false);
+                }}
+                className="absolute -top-2 -right-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-border bg-popover text-popover-foreground shadow-sm z-10"
+                aria-label="Fechar descrição"
+                title="Fechar"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+              <p className="text-xs text-popover-foreground leading-tight pr-1">{displaySubtitle}</p>
+            </div>
+          ) : null}
         </div>
       </CardHeader>
     </Card>

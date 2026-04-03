@@ -3987,6 +3987,9 @@ Todos os direitos reservados.`;
   const pageSpacingClass = isParentesMode ? 'space-y-2 md:space-y-3' : 'space-y-4 md:space-y-6';
   const headerContentSpacingClass = isParentesMode ? 'mt-2 md:mt-3' : 'mt-4 md:mt-6';
   const contentGridGapClass = isParentesMode ? 'gap-2 md:gap-3 lg:gap-3' : 'gap-4 md:gap-6 lg:gap-8';
+  const resultStackSpacingClass = isParentesMode ? 'space-y-3 md:space-y-4' : 'space-y-6';
+  const detailedCardContentClass = isParentesMode ? 'space-y-3 p-4 md:p-5' : 'space-y-4 p-4 md:p-6';
+  const statsGridGapClass = isParentesMode ? 'gap-2 sm:gap-3 md:gap-3' : 'gap-3 sm:gap-4 md:gap-6';
 
   return (
     <div className={`${pageSpacingClass} max-w-full overflow-x-hidden`}>
@@ -4327,7 +4330,7 @@ Todos os direitos reservados.`;
           hasData ? "border-success-border bg-success-subtle" : undefined;
         
         return (
-        <div ref={resultRef} data-pdf-container className="space-y-6 w-full max-w-full overflow-hidden">
+        <div ref={resultRef} data-pdf-container className={`${resultStackSpacingClass} w-full max-w-full overflow-hidden`}>
            {/* Header com status de sucesso e ações */}
           <Card className="border-success-border w-full overflow-hidden">
             <CardHeader className="bg-success-subtle p-4 md:p-6">
@@ -4843,7 +4846,7 @@ Todos os direitos reservados.`;
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4 p-4 md:p-6">
+              <CardContent className={detailedCardContentClass}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
                   <div>
                     <Label className="text-xs sm:text-sm" htmlFor="cpf">CPF</Label>
@@ -5113,7 +5116,7 @@ Todos os direitos reservados.`;
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="space-y-4 p-4 md:p-6">
+            <CardContent className={detailedCardContentClass}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
                   <Label className="text-xs sm:text-sm" htmlFor="titulo_eleitor">Título de Eleitor</Label>
@@ -5567,7 +5570,7 @@ Todos os direitos reservados.`;
 
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+      <div className={`grid grid-cols-2 lg:grid-cols-4 ${statsGridGapClass}`}>
         <Card className="w-full">
           <CardContent className="p-3 sm:p-4">
             <div className="text-center">

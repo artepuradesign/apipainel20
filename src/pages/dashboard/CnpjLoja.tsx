@@ -10,7 +10,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import SimpleTitleBar from '@/components/dashboard/SimpleTitleBar';
-import { ShoppingBag, Star, Eye, Pencil, Trash2, RefreshCw, Package, Save } from 'lucide-react';
+import { ShoppingBag, Star, Eye, Pencil, Trash2, Package, Save } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { cnpjProdutosService, type CnpjProduto } from '@/services/cnpjProdutosService';
@@ -418,13 +418,6 @@ const CnpjLoja = () => {
           'Vitrine da sua empresa com produtos para venda'
         }
         icon={<Package className="h-4 w-4 sm:h-5 sm:w-5" />}
-        right={
-          <>
-            <Button variant="ghost" size="sm" onClick={loadProdutos} disabled={loading} className="h-8 w-8 p-0">
-              <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
-            </Button>
-          </>
-        }
         onBack={() => navigate('/dashboard')}
       />
 

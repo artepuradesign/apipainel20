@@ -709,7 +709,6 @@ const ControlePessoalClientesPage = () => {
             size="icon"
             className="rounded-full h-8 w-8"
             aria-label="Nova consulta de cliente"
-            title="Nova consulta de cliente"
             onClick={() => modulesSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
           >
             <Plus className="h-4 w-4" />

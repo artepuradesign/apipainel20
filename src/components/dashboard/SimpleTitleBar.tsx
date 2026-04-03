@@ -203,7 +203,7 @@ const SimpleTitleBar = ({
               </button>
 
               {displaySubtitle && isMobileSubtitleOpen ? (
-                <div className="absolute top-full right-0 mt-2 w-[320px] max-w-[calc(100vw-5rem)] rounded-md border border-border bg-popover px-4 py-3 text-left shadow-md z-20 overflow-visible">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[320px] max-w-[calc(100vw-1rem)] rounded-md border border-border bg-popover px-4 py-3 text-left shadow-md z-20 overflow-visible">
                   <button
                     type="button"
                     onClick={(event) => {

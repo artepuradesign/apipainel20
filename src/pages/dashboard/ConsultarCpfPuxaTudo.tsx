@@ -3984,10 +3984,12 @@ Todos os direitos reservados.`;
     navigate('/dashboard');
   };
 
-  const headerContentSpacingClass = isParentesMode ? 'mt-1 md:mt-2' : 'mt-4 md:mt-6';
+  const pageSpacingClass = isParentesMode ? 'space-y-3 md:space-y-4' : 'space-y-4 md:space-y-6';
+  const headerContentSpacingClass = isParentesMode ? 'mt-3 md:mt-4' : 'mt-4 md:mt-6';
+  const contentGridGapClass = isParentesMode ? 'gap-3 md:gap-4 lg:gap-4' : 'gap-4 md:gap-6 lg:gap-8';
 
   return (
-    <div className="space-y-4 md:space-y-6 max-w-full overflow-x-hidden">
+    <div className={`${pageSpacingClass} max-w-full overflow-x-hidden`}>
       <div className="w-full">
         <SimpleTitleBar
           title={moduleTitle || 'Consulta CPF'}
@@ -3995,7 +3997,7 @@ Todos os direitos reservados.`;
           onBack={handleBack}
         />
 
-        <div className={`${headerContentSpacingClass} grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-8`}>
+        <div className={`${headerContentSpacingClass} grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] ${contentGridGapClass}`}>
         {/* Formulário de Consulta */}
         <Card className="dark:bg-gray-800 dark:border-gray-700 w-full">
           <CardHeader className="pb-4">

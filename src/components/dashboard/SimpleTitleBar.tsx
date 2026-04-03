@@ -210,7 +210,7 @@ const SimpleTitleBar = ({
               <ArrowLeft className="h-3.5 w-3.5" />
             </Button>
             {activeActionBalloon === "back" ? (
-              <div className="hidden sm:block absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-md border border-border bg-popover px-3 py-2 text-xs text-popover-foreground shadow-md z-20 whitespace-nowrap">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-md border border-border bg-popover px-3 py-2 text-xs text-popover-foreground shadow-md z-20 whitespace-nowrap">
                 Voltar
               </div>
             ) : null}
@@ -229,7 +229,7 @@ const SimpleTitleBar = ({
               <RefreshCw className="h-3.5 w-3.5" />
             </Button>
             {activeActionBalloon === "refresh" ? (
-              <div className="hidden sm:block absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-md border border-border bg-popover px-3 py-2 text-xs text-popover-foreground shadow-md z-20 whitespace-nowrap">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-md border border-border bg-popover px-3 py-2 text-xs text-popover-foreground shadow-md z-20 whitespace-nowrap">
                 Atualizar
               </div>
             ) : null}
@@ -255,7 +255,7 @@ const SimpleTitleBar = ({
             >
               {leftActions}
               {activeActionBalloon === "left" ? (
-                <div className="hidden sm:block absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-md border border-border bg-popover px-3 py-2 text-xs text-popover-foreground shadow-md z-20 whitespace-nowrap">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-md border border-border bg-popover px-3 py-2 text-xs text-popover-foreground shadow-md z-20 whitespace-nowrap">
                   {leftActionsTooltip || "Adicionar"}
                 </div>
               ) : null}

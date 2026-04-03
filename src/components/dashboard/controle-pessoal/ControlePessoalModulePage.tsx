@@ -1236,7 +1236,7 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
     }
   };
 
-  const modulePageSpacingClass = isAgenda ? 'space-y-2 md:space-y-3' : 'space-y-3 md:space-y-4';
+  const modulePageSpacingClass = isAgenda ? 'space-y-1.5 md:space-y-2' : 'space-y-3 md:space-y-4';
 
   return (
     <div className={modulePageSpacingClass}>
@@ -1264,7 +1264,7 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
         <PageHeaderCard title={title} subtitle={subtitle} />
       )}
 
-      <div className={`grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_minmax(340px,420px)] ${isAgenda ? 'gap-2 md:gap-3' : 'gap-6'}`}>
+      <div className={`grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_minmax(340px,420px)] ${isAgenda ? 'gap-1.5 md:gap-2' : 'gap-6'}`}>
         {!isAgenda ? (
         <Card>
             <CardHeader>
@@ -1785,10 +1785,10 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
           )}
           <CardContent className={isAgenda ? 'p-0 text-sm sm:text-base' : undefined}>
             {isAgenda ? (
-              <div className={isAgenda ? 'space-y-3 md:space-y-4' : 'space-y-4'}>
-                <div className={`grid grid-cols-1 md:grid-cols-[minmax(0,1.4fr)_minmax(280px,1fr)] xl:grid-cols-[minmax(0,1.5fr)_minmax(280px,1fr)_minmax(280px,1fr)] xl:items-start ${isAgenda ? 'gap-3 md:gap-4' : 'gap-4'}`}>
-                  <div className="order-2 min-w-0 rounded-xl border border-border bg-card p-3 sm:p-4 shadow-sm md:order-1">
-                    <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+              <div className={isAgenda ? 'space-y-2 md:space-y-3' : 'space-y-4'}>
+                <div className={`grid grid-cols-1 md:grid-cols-[minmax(0,1.4fr)_minmax(280px,1fr)] xl:grid-cols-[minmax(0,1.5fr)_minmax(280px,1fr)_minmax(280px,1fr)] xl:items-start ${isAgenda ? 'gap-2 md:gap-3' : 'gap-4'}`}>
+                  <div className="order-2 min-w-0 rounded-xl border border-border bg-card p-2.5 sm:p-3 shadow-sm md:order-1">
+                    <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
                       <div>
                         <p className="text-base font-semibold text-foreground md:text-lg">Linha do tempo diária</p>
                         <p className="text-sm text-muted-foreground md:text-base">Base padrão 06:00–18:00. Arraste ou use os botões para ver toda a grade.</p>
@@ -1798,7 +1798,7 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
                       </Badge>
                     </div>
 
-                    <div className="rounded-lg border border-border bg-background p-2">
+                    <div className="rounded-lg border border-border bg-background p-1.5">
                       <div className="relative">
                         <div
                           ref={timelineScrollRef}
@@ -1899,8 +1899,8 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
                   </div>
 
                   {agendaCalendarPanels.map((panel) => (
-                    <div key={panel.id} className={`${panel.visibilityClass} order-1 min-w-0 rounded-xl border border-border bg-card p-3 sm:p-4 shadow-sm md:order-2`}>
-                      <div className="mb-3 flex items-center justify-between rounded-lg border border-border bg-background px-3 py-2">
+                    <div key={panel.id} className={`${panel.visibilityClass} order-1 min-w-0 rounded-xl border border-border bg-card p-2.5 sm:p-3 shadow-sm md:order-2`}>
+                      <div className="mb-2 flex items-center justify-between rounded-lg border border-border bg-background px-3 py-2">
                         <p className="text-base font-semibold text-foreground md:text-lg">{panel.title}</p>
                         <Badge variant="secondary">{datesWithAppointments.length} dias ativos</Badge>
                       </div>
@@ -1921,20 +1921,20 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
                         />
                       </div>
 
-                      <div className="mt-3 rounded-lg border border-border bg-background px-3 py-2 text-sm text-muted-foreground">
+                      <div className="mt-2 rounded-lg border border-border bg-background px-3 py-2 text-sm text-muted-foreground">
                         <span className="font-semibold text-foreground">Data selecionada:</span> {formatDateBR(selectedDate)}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="rounded-xl border border-border bg-card p-3 sm:p-4 shadow-sm">
-                  <div className="mb-3 flex items-center justify-between gap-2">
+                <div className="rounded-xl border border-border bg-card p-2.5 sm:p-3 shadow-sm">
+                  <div className="mb-2 flex items-center justify-between gap-2">
                     <p className="text-base font-semibold text-foreground md:text-lg">Histórico do dia</p>
                     <Badge variant="secondary">{recordsForSelectedDate.length}</Badge>
                   </div>
 
-                  <div className="max-h-[320px] space-y-2 overflow-y-auto pr-1">
+                  <div className="max-h-[320px] space-y-1.5 overflow-y-auto pr-1">
                     {recordsForSelectedDate.length === 0 ? (
                       <p className="rounded-md border border-dashed border-border bg-background p-3 text-sm text-muted-foreground">
                         Nenhum registro em {formatDateBR(selectedDate)}.
@@ -1983,7 +1983,7 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
                                 </Button>
                               </div>
                             </div>
-                            <div className="mt-2">
+                            <div className="mt-1">
                               <Badge variant={statusMeta.badgeVariant}>{statusMeta.label}</Badge>
                             </div>
                           </div>

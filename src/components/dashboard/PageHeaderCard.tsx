@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Crown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import SimpleTitleBar from '@/components/dashboard/SimpleTitleBar';
 
 export interface PageHeaderCardProps {
   title: string;
@@ -28,49 +28,27 @@ const PageHeaderCard: React.FC<PageHeaderCardProps> = ({
   showAddButton,
   isCompact
 }) => {
+  const navigate = useNavigate();
+
+  const subtitleParts = [subtitle, currentPlan ? `Plano: ${currentPlan}` : null, valueDetails || null].filter(Boolean);
+  const computedSubtitle = subtitleParts.join(' • ');
+
+  const computedTitle = badgeText ? `${title} • ${badgeText}` : title;
+
+  const extraNode = extra ? (
+    <div className="flex items-center gap-2">
+      {extra}
+    </div>
+  ) : undefined;
+
   return (
-    <Card className="bg-card border-border">
-      <CardHeader className="pb-3 lg:pb-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle className="flex items-center gap-2 text-lg lg:text-2xl font-bold">
-              {isControlPanel && <Crown className="h-4 w-4 lg:h-6 lg:w-6 text-yellow-500" />}
-              {title}
-              {badgeText && (
-                <span className="text-xs lg:text-sm bg-brand-purple text-white px-2 py-1 rounded-full">
-                  {badgeText}
-                </span>
-              )}
-            </CardTitle>
-            <p className="hidden sm:block text-muted-foreground mt-1 text-sm lg:text-base">
-              {subtitle}
-            </p>
-            {currentPlan && (
-              <p className="text-sm text-brand-purple font-medium mt-1">
-                Plano: {currentPlan}
-              </p>
-            )}
-            {value && (
-              <div className="mt-2">
-                <p className="text-lg font-semibold">
-                  {value}
-                </p>
-                {valueDetails && (
-                  <p className="text-sm text-muted-foreground">
-                    {valueDetails}
-                  </p>
-                )}
-              </div>
-            )}
-          </div>
-          {extra && (
-            <div>
-              {extra}
-            </div>
-          )}
-        </div>
-      </CardHeader>
-    </Card>
+    <SimpleTitleBar
+      title={computedTitle}
+      subtitle={computedSubtitle}
+      right={extraNode}
+      onBack={() => (window.history.length > 1 ? navigate(-1) : navigate('/dashboard'))}
+      useModuleMetadata={false}
+    />
   );
 };
 

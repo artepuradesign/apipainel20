@@ -93,6 +93,9 @@ const SimpleTitleBar = ({
 
   const displayTitle = useModuleMetadata ? (moduleTitle || title) : title;
   const displaySubtitle = useModuleMetadata ? (moduleDescription || subtitle) : subtitle;
+  const handleSubtitlePreviewOpen = () => {
+    if (displaySubtitle) setIsMobileSubtitleOpen(true);
+  };
   const subtitlePreview = useMemo(() => {
     if (!displaySubtitle) return '';
     if (displaySubtitle.length <= 85) return displaySubtitle;
@@ -122,6 +125,7 @@ const SimpleTitleBar = ({
           return (
             <div 
               className="shrink-0 p-1 rounded-lg border"
+              onMouseEnter={handleSubtitlePreviewOpen}
           style={moduleColor ? getIconStyles() : undefined}
         >
           <span style={moduleColor ? { color: moduleColor } : undefined} className={!moduleColor ? "text-primary" : ""}>
@@ -136,6 +140,7 @@ const SimpleTitleBar = ({
           return (
             <div 
               className="shrink-0 p-1 rounded-lg border"
+              onMouseEnter={handleSubtitlePreviewOpen}
           style={moduleColor ? getIconStyles() : undefined}
         >
               <ModuleIcon 
@@ -183,13 +188,12 @@ const SimpleTitleBar = ({
             {right ? right : null}
             <div
               className="min-w-0 text-right flex flex-col items-end gap-0 relative"
-              onMouseEnter={() => {
-                if (displaySubtitle) setIsMobileSubtitleOpen(true);
-              }}
+              onMouseEnter={handleSubtitlePreviewOpen}
             >
               <button
                 type="button"
                 onClick={() => setIsMobileSubtitleOpen((prev) => !prev)}
+                onMouseEnter={handleSubtitlePreviewOpen}
                 className="text-right"
                 aria-label="Mostrar descrição do módulo"
               >

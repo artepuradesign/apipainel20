@@ -1251,7 +1251,6 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
               onClick={isAgenda ? handleOpenAgendaModal : handleOpenNewClientLookupModal}
               className="rounded-full h-8 w-8"
               aria-label={isAgenda ? 'Novo compromisso' : 'Consultar CPF para novo cliente'}
-              title={isAgenda ? 'Novo compromisso' : 'Consultar CPF para novo cliente'}
             >
               <Plus className="h-4 w-4" />
             </Button>

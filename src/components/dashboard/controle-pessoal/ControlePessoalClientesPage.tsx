@@ -697,7 +697,7 @@ const ControlePessoalClientesPage = () => {
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-3 md:space-y-4">
       <SimpleTitleBar
         title="Controle Pessoal • Clientes"
         subtitle="Consulte CPF, salve clientes pagos e use cadastro manual somente quando não houver retorno"

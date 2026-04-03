@@ -1236,8 +1236,10 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
     }
   };
 
+  const modulePageSpacingClass = isAgenda ? 'space-y-2 md:space-y-3' : 'space-y-3 md:space-y-4';
+
   return (
-    <div className="space-y-3 md:space-y-4">
+    <div className={modulePageSpacingClass}>
       {isAgenda || isNewClient ? (
         <SimpleTitleBar
           title={title}

@@ -107,13 +107,19 @@ const SimpleTitleBar = ({
   // Renderizar o ícone grande à esquerda
   const renderLargeIcon = () => {
     if (icon) {
+      const sizedIcon = React.isValidElement(icon)
+        ? React.cloneElement(icon as React.ReactElement<{ className?: string }>, {
+            className: `h-6 w-6 md:h-7 md:w-7 ${(icon as React.ReactElement<{ className?: string }>).props.className || ''}`.trim(),
+          })
+        : icon;
+
           return (
             <div 
               className="shrink-0 p-1 rounded-lg border"
           style={moduleColor ? getIconStyles() : undefined}
         >
           <span style={moduleColor ? { color: moduleColor } : undefined} className={!moduleColor ? "text-primary" : ""}>
-            {icon}
+            {sizedIcon}
           </span>
         </div>
       );

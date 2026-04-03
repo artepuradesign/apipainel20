@@ -254,7 +254,7 @@ const SimpleTitleBar = ({
                     event.stopPropagation();
                     setIsMobileSubtitleOpen(false);
                   }}
-                  className="absolute -top-2 -right-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-border bg-popover text-popover-foreground shadow-sm z-10"
+                className="absolute -top-2 -right-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-border bg-popover text-popover-foreground shadow-sm z-10 transition-colors hover:bg-popover-foreground hover:text-popover"
                   aria-label="Fechar descrição"
                   title="Fechar"
                 >

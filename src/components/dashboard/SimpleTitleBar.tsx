@@ -212,7 +212,7 @@ const SimpleTitleBar = ({
               ) : null}
 
               {displaySubtitle ? (
-                <p className="hidden sm:block text-xs md:text-xs lg:text-xs text-muted-foreground -mt-1 md:-mt-1 leading-none line-clamp-2 md:line-clamp-none">
+                <p className="hidden sm:block text-xs md:text-xs lg:text-xs text-muted-foreground -mt-1 md:-mt-1 leading-none md:max-lg:max-w-[420px] md:max-lg:truncate md:max-lg:whitespace-nowrap md:max-lg:overflow-hidden">
                   {displaySubtitle}
                 </p>
               ) : null}

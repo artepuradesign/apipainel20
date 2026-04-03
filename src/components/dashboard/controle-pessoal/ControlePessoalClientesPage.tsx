@@ -702,12 +702,12 @@ const ControlePessoalClientesPage = () => {
         title="Controle Pessoal • Clientes"
         subtitle="Consulte CPF, salve clientes pagos e use cadastro manual somente quando não houver retorno"
         icon={<Users className="h-5 w-5" />}
-        right={(
+        leftActions={(
           <Button
             type="button"
             variant="outline"
             size="icon"
-            className="rounded-full h-9 w-9"
+            className="rounded-full h-8 w-8"
             aria-label="Nova consulta de cliente"
             title="Nova consulta de cliente"
             onClick={() => modulesSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}

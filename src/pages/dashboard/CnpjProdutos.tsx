@@ -912,7 +912,7 @@ const CnpjProdutos = () => {
   };
 
   return (
-    <div className="space-y-3 md:space-y-4 px-1 sm:px-0 max-w-full overflow-x-hidden [&_label]:text-[13px] sm:[&_label]:text-sm [&_input]:text-sm [&_textarea]:text-sm">
+    <div className="space-y-3 md:space-y-4 max-w-full overflow-x-hidden [&_label]:text-[13px] sm:[&_label]:text-sm [&_input]:text-sm [&_textarea]:text-sm">
       <SimpleTitleBar
         title="CNPJ Produtos"
         subtitle="Controle completo de produtos das empresas"

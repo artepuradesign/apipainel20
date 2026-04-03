@@ -93,6 +93,11 @@ const SimpleTitleBar = ({
 
   const displayTitle = useModuleMetadata ? (moduleTitle || title) : title;
   const displaySubtitle = useModuleMetadata ? (moduleDescription || subtitle) : subtitle;
+  const subtitlePreview = useMemo(() => {
+    if (!displaySubtitle) return '';
+    if (displaySubtitle.length <= 85) return displaySubtitle;
+    return `${displaySubtitle.slice(0, 85).trimEnd()}...`;
+  }, [displaySubtitle]);
 
   // Gerar estilos dinâmicos baseados na cor do módulo
   const getIconStyles = () => {
@@ -194,7 +199,7 @@ const SimpleTitleBar = ({
               </button>
 
               {displaySubtitle && isMobileSubtitleOpen ? (
-                <div className="sm:hidden absolute top-full right-0 mt-2 min-w-[260px] max-w-[320px] rounded-md border border-border bg-popover px-3 py-3 pr-10 text-left shadow-md z-20">
+                <div className="absolute top-full right-0 mt-2 min-w-[260px] max-w-[320px] rounded-md border border-border bg-popover px-3 py-3 pr-10 text-left shadow-md z-20">
                   <button
                     type="button"
                     onClick={(event) => {
@@ -212,8 +217,8 @@ const SimpleTitleBar = ({
               ) : null}
 
               {displaySubtitle ? (
-                <p className="hidden sm:block text-xs md:text-xs lg:text-xs text-muted-foreground -mt-1 md:-mt-1 leading-none md:max-lg:max-w-[420px] md:max-lg:truncate md:max-lg:whitespace-nowrap md:max-lg:overflow-hidden">
-                  {displaySubtitle}
+                <p className="hidden sm:block text-xs md:text-xs lg:text-xs text-muted-foreground -mt-1 md:-mt-1 leading-none whitespace-nowrap overflow-hidden text-ellipsis max-w-[420px]">
+                  {subtitlePreview}
                 </p>
               ) : null}
             </div>

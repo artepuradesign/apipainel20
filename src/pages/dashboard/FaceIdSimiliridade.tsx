@@ -227,7 +227,7 @@ const FaceIdSimiliridade = () => {
   };
 
   return (
-    <div className="space-y-4 px-0 sm:space-y-6 max-w-full overflow-x-hidden">
+    <div className="space-y-3 md:space-y-4 max-w-full overflow-x-hidden">
       <SimpleTitleBar
         title={currentModule?.title || 'Verificação de Semelhança'}
         subtitle={currentModule?.description || 'Compare uma foto com a base de clientes e encontre os mais próximos'}
@@ -247,7 +247,7 @@ const FaceIdSimiliridade = () => {
         />
       ) : null}
 
-      <div className="mt-4 md:mt-6 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_380px] gap-4 md:gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-8">
         <Card className="w-full">
           <CardHeader className="pb-4">
             <div className="relative rounded-lg border bg-gradient-to-br from-primary/10 via-background to-accent/10 shadow-sm transition-all duration-300">
@@ -259,7 +259,7 @@ const FaceIdSimiliridade = () => {
                 </div>
               ) : null}
               <div className="relative p-3.5 md:p-4">
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex min-w-0 flex-1 items-center gap-2.5">
                     <div className="h-10 w-1 flex-shrink-0 rounded-full bg-gradient-to-b from-primary to-accent" />
                     <div className="min-w-0">
@@ -267,7 +267,7 @@ const FaceIdSimiliridade = () => {
                       <h3 className="truncate text-sm font-bold sm:text-base">{userPlan}</h3>
                     </div>
                   </div>
-                  <div className="flex flex-shrink-0 flex-col items-end gap-0.5">
+                  <div className="flex flex-shrink-0 flex-col items-start gap-0.5 sm:items-end">
                     {hasDiscount ? <span className="text-[10px] text-muted-foreground line-through sm:text-xs">R$ {modulePrice.toFixed(2)}</span> : null}
                     <span className="whitespace-nowrap bg-gradient-to-r from-primary to-accent bg-clip-text text-xl font-bold text-transparent md:text-2xl">
                       R$ {finalPrice.toFixed(2)}
@@ -390,7 +390,40 @@ const FaceIdSimiliridade = () => {
             </Button>
           </div>
 
-          <div className="rounded-md border overflow-x-auto">
+          <div className="space-y-3 md:hidden">
+            {filteredResults.length === 0 ? (
+              <div className="rounded-md border p-4 text-center text-sm text-muted-foreground">Nenhum resultado encontrado.</div>
+            ) : (
+              filteredResults.map((item) => (
+                <div key={item.id} className="rounded-md border bg-card p-3">
+                  <div className="flex items-start gap-3">
+                    {item.photo_url ? (
+                      <img
+                        src={item.photo_url}
+                        alt={`Resultado com similaridade ${item.similaridade}%`}
+                        className="h-14 w-14 shrink-0 rounded object-contain"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded border text-[10px] text-muted-foreground">Sem foto</div>
+                    )}
+                    <div className="min-w-0 flex-1 space-y-1">
+                      <p className="truncate text-sm font-semibold">{item.nome}</p>
+                      <p className="text-xs text-muted-foreground">Arquivo: {item.photo_filename || '-'}</p>
+                      <p className="text-xs text-muted-foreground">Sexo: {item.gender || '-'}</p>
+                      <p className="text-xs text-muted-foreground">Similaridade: {item.similaridade}%</p>
+                    </div>
+                  </div>
+                  <div className="mt-3 flex items-center justify-between gap-2">
+                    <span className="text-[11px] text-muted-foreground">{item.data}</span>
+                    <Button variant="outline" size="sm" onClick={() => setDetailResult(item)}>Ver detalhes</Button>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+
+          <div className="hidden rounded-md border overflow-x-auto md:block">
             <Table>
               <TableHeader>
                 <TableRow>

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { QrCode, Smartphone, Link as LinkIcon, Bot, CheckCircle2, RefreshCw, Copy, ShieldCheck, SmartphoneNfc } from 'lucide-react';
+import { QrCode, Smartphone, Link as LinkIcon, CheckCircle2, RefreshCw, Copy, ShieldCheck, SmartphoneNfc } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
 import ReactQRCode from 'react-qr-code';
 import { toast } from 'sonner';
@@ -224,12 +224,6 @@ const CpnjConexoes = () => {
         icon={<ModuleIcon className="h-4 w-4 sm:h-5 sm:w-5" />}
         onBack={() => navigate('/dashboard/cnpj-chatinteligente')}
         useModuleMetadata={false}
-        right={
-          <Button variant="outline" size="sm" onClick={() => navigate('/dashboard/cnpj-chatinteligente')}>
-            <Bot className="mr-2 h-4 w-4" />
-            Voltar ao agente
-          </Button>
-        }
       />
 
       <Card>

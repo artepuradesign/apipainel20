@@ -97,7 +97,13 @@ const SimpleTitleBar = ({
 
   const displayTitle = useModuleMetadata ? (moduleTitle || title) : title;
   const displaySubtitle = useModuleMetadata ? (moduleDescription || subtitle) : subtitle;
+  const handleActionBalloonOpen = (balloon: "back" | "refresh" | "left") => {
+    setActiveActionBalloon(balloon);
+    setIsMobileSubtitleOpen(false);
+  };
+  const handleActionBalloonClose = () => setActiveActionBalloon(null);
   const handleSubtitlePreviewOpen = () => {
+    setActiveActionBalloon(null);
     if (displaySubtitle) setIsMobileSubtitleOpen(true);
   };
   const subtitlePreview = useMemo(() => {
@@ -191,13 +197,12 @@ const SimpleTitleBar = ({
     <Card className="bg-card border-border">
       <CardHeader className="px-3 py-3 md:px-4 md:py-3">
         <div className="relative flex items-center gap-2">
-          <div className="relative">
+          <div className="relative" onMouseLeave={handleActionBalloonClose}>
             <Button
               variant="outline"
               size="icon"
               onClick={onBack}
-              onMouseEnter={() => setActiveActionBalloon("back")}
-              onMouseLeave={() => setActiveActionBalloon(null)}
+              onMouseEnter={() => handleActionBalloonOpen("back")}
               className="rounded-full h-8 w-8 shrink-0"
               aria-label="Voltar"
               title="Voltar"
@@ -211,13 +216,12 @@ const SimpleTitleBar = ({
             ) : null}
           </div>
 
-          <div className="relative">
+          <div className="relative" onMouseLeave={handleActionBalloonClose}>
             <Button
               variant="outline"
               size="icon"
               onClick={() => window.location.reload()}
-              onMouseEnter={() => setActiveActionBalloon("refresh")}
-              onMouseLeave={() => setActiveActionBalloon(null)}
+              onMouseEnter={() => handleActionBalloonOpen("refresh")}
               className="rounded-full h-8 w-8 shrink-0"
               aria-label="Atualizar página"
               title="Atualizar página"
@@ -246,8 +250,8 @@ const SimpleTitleBar = ({
           {leftActions ? (
             <div
               className="relative flex items-center gap-2 shrink-0"
-              onMouseEnter={() => setActiveActionBalloon("left")}
-              onMouseLeave={() => setActiveActionBalloon(null)}
+              onMouseEnter={() => handleActionBalloonOpen("left")}
+              onMouseLeave={handleActionBalloonClose}
             >
               {leftActions}
               {activeActionBalloon === "left" ? (

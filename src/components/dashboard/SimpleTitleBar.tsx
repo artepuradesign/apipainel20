@@ -176,7 +176,7 @@ const SimpleTitleBar = ({
           <div className="ml-auto flex items-center gap-3 min-w-0">
             {right ? right : null}
             <div className="min-w-0 text-right flex flex-col items-end gap-0">
-              <CardTitle className="text-sm md:text-lg leading-none m-0 p-0">
+              <CardTitle className="text-base md:text-lg leading-none m-0 p-0">
                 <span className="truncate">{displayTitle}</span>
               </CardTitle>
               {displaySubtitle ? (

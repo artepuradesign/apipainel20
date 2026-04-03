@@ -203,14 +203,14 @@ const SimpleTitleBar = ({
               </button>
 
               {displaySubtitle && isMobileSubtitleOpen ? (
-                <div className="absolute top-full right-0 mt-2 min-w-[260px] max-w-[320px] rounded-md border border-border bg-popover px-3 py-3 pr-10 text-left shadow-md z-20">
+                <div className="absolute top-full right-0 mt-2 min-w-[280px] max-w-[340px] rounded-md border border-border bg-popover px-3 py-3 text-left shadow-md z-20 overflow-visible">
                   <button
                     type="button"
                     onClick={(event) => {
                       event.stopPropagation();
                       setIsMobileSubtitleOpen(false);
                     }}
-                    className="absolute top-2 right-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-border bg-background text-foreground"
+                    className="absolute -top-2 -right-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-border bg-popover text-popover-foreground shadow-sm z-10"
                     aria-label="Fechar descrição"
                     title="Fechar"
                   >

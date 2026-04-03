@@ -715,6 +715,7 @@ const ControlePessoalClientesPage = () => {
             <Plus className="h-4 w-4" />
           </Button>
         )}
+        leftActionsTooltip="Nova consulta"
         onBack={() => navigate('/dashboard')}
       />
 

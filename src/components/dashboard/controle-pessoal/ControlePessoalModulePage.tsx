@@ -1256,6 +1256,7 @@ const ControlePessoalModulePage = ({ moduleType, title, subtitle, formTitle }: C
               <Plus className="h-4 w-4" />
             </Button>
           ) : undefined}
+          leftActionsTooltip={isAgenda ? 'Novo compromisso' : undefined}
           onBack={() => navigate('/dashboard')}
         />
       ) : (

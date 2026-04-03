@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { ArrowLeft, CircleHelp, Package, RefreshCw, X } from "lucide-react";
 import * as Icons from "lucide-react";
 import { useLocation } from "react-router-dom";
@@ -15,6 +14,7 @@ interface SimpleTitleBarProps {
   icon?: React.ReactNode;
   right?: React.ReactNode;
   leftActions?: React.ReactNode;
+  leftActionsTooltip?: string;
   useModuleMetadata?: boolean;
 }
 
@@ -25,10 +25,12 @@ const SimpleTitleBar = ({
   icon,
   right,
   leftActions,
+  leftActionsTooltip,
   useModuleMetadata = true,
 }: SimpleTitleBarProps) => {
   const [isMobileSubtitleOpen, setIsMobileSubtitleOpen] = useState(false);
   const [typedSubtitle, setTypedSubtitle] = useState("");
+  const [activeActionBalloon, setActiveActionBalloon] = useState<"back" | "refresh" | "left" | null>(null);
   const location = useLocation();
   const { modules } = useApiModules();
 
@@ -189,41 +191,45 @@ const SimpleTitleBar = ({
     <Card className="bg-card border-border">
       <CardHeader className="px-3 py-3 md:px-4 md:py-3">
         <div className="relative flex items-center gap-2">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={onBack}
-                className="rounded-full h-8 w-8 shrink-0"
-                aria-label="Voltar"
-                title="Voltar"
-              >
-                <ArrowLeft className="h-3.5 w-3.5" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Voltar</p>
-            </TooltipContent>
-          </Tooltip>
+          <div className="relative">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={onBack}
+              onMouseEnter={() => setActiveActionBalloon("back")}
+              onMouseLeave={() => setActiveActionBalloon(null)}
+              className="rounded-full h-8 w-8 shrink-0"
+              aria-label="Voltar"
+              title="Voltar"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+            </Button>
+            {activeActionBalloon === "back" ? (
+              <div className="hidden sm:block absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-md border border-border bg-popover px-3 py-2 text-xs text-popover-foreground shadow-md z-20 whitespace-nowrap">
+                Voltar
+              </div>
+            ) : null}
+          </div>
 
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => window.location.reload()}
-                className="rounded-full h-8 w-8 shrink-0"
-                aria-label="Atualizar página"
-                title="Atualizar página"
-              >
-                <RefreshCw className="h-3.5 w-3.5" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Atualizar</p>
-            </TooltipContent>
-          </Tooltip>
+          <div className="relative">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => window.location.reload()}
+              onMouseEnter={() => setActiveActionBalloon("refresh")}
+              onMouseLeave={() => setActiveActionBalloon(null)}
+              className="rounded-full h-8 w-8 shrink-0"
+              aria-label="Atualizar página"
+              title="Atualizar página"
+            >
+              <RefreshCw className="h-3.5 w-3.5" />
+            </Button>
+            {activeActionBalloon === "refresh" ? (
+              <div className="hidden sm:block absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-md border border-border bg-popover px-3 py-2 text-xs text-popover-foreground shadow-md z-20 whitespace-nowrap">
+                Atualizar
+              </div>
+            ) : null}
+          </div>
 
           <Button
             variant="outline"
@@ -237,7 +243,20 @@ const SimpleTitleBar = ({
             <CircleHelp className="h-3.5 w-3.5" />
           </Button>
 
-          {leftActions ? <div className="flex items-center gap-2 shrink-0">{leftActions}</div> : null}
+          {leftActions ? (
+            <div
+              className="relative flex items-center gap-2 shrink-0"
+              onMouseEnter={() => setActiveActionBalloon("left")}
+              onMouseLeave={() => setActiveActionBalloon(null)}
+            >
+              {leftActions}
+              {activeActionBalloon === "left" ? (
+                <div className="hidden sm:block absolute top-full left-1/2 -translate-x-1/2 mt-2 rounded-md border border-border bg-popover px-3 py-2 text-xs text-popover-foreground shadow-md z-20 whitespace-nowrap">
+                  {leftActionsTooltip || "Adicionar"}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
 
           <div className="ml-auto flex items-center gap-3 min-w-0">
             {right ? right : null}

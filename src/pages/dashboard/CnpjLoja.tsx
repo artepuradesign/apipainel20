@@ -410,7 +410,7 @@ const CnpjLoja = () => {
   };
 
   return (
-    <div className="space-y-4 sm:space-y-6 px-1 sm:px-0">
+    <div className="space-y-3 md:space-y-4 max-w-full overflow-x-hidden">
       <SimpleTitleBar
         title={currentModule?.title?.toString().trim() || 'Loja Virtual CNPJ'}
         subtitle={

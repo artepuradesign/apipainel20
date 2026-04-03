@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
@@ -27,6 +27,7 @@ const SimpleTitleBar = ({
   useModuleMetadata = true,
 }: SimpleTitleBarProps) => {
   const [isMobileSubtitleOpen, setIsMobileSubtitleOpen] = useState(false);
+  const [typedSubtitle, setTypedSubtitle] = useState("");
   const location = useLocation();
   const { modules } = useApiModules();
 
@@ -101,6 +102,33 @@ const SimpleTitleBar = ({
     if (displaySubtitle.length <= 85) return displaySubtitle;
     return `${displaySubtitle.slice(0, 85).trimEnd()}...`;
   }, [displaySubtitle]);
+
+  useEffect(() => {
+    if (!isMobileSubtitleOpen || !displaySubtitle) {
+      setTypedSubtitle("");
+      return;
+    }
+
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setTypedSubtitle(displaySubtitle);
+      return;
+    }
+
+    let cursor = 0;
+    setTypedSubtitle("");
+
+    const timer = window.setInterval(() => {
+      cursor += 2;
+      const nextValue = displaySubtitle.slice(0, cursor);
+      setTypedSubtitle(nextValue);
+
+      if (cursor >= displaySubtitle.length) {
+        window.clearInterval(timer);
+      }
+    }, 14);
+
+    return () => window.clearInterval(timer);
+  }, [displaySubtitle, isMobileSubtitleOpen]);
 
   // Gerar estilos dinâmicos baseados na cor do módulo
   const getIconStyles = () => {
@@ -232,7 +260,7 @@ const SimpleTitleBar = ({
                 >
                   <X className="h-3.5 w-3.5" />
                 </button>
-                <p className="text-sm text-popover-foreground leading-tight pr-1">{displaySubtitle}</p>
+                <p className="text-sm text-popover-foreground leading-tight pr-1">{typedSubtitle || displaySubtitle}</p>
               </div>
             </>
           ) : null}

@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Package, RefreshCw } from "lucide-react";
+import { ArrowLeft, Package, RefreshCw, X } from "lucide-react";
 import * as Icons from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useApiModules } from "@/hooks/useApiModules";
@@ -189,7 +189,19 @@ const SimpleTitleBar = ({
               </button>
 
               {displaySubtitle && isMobileSubtitleOpen ? (
-                <div className="sm:hidden absolute top-full right-0 mt-2 max-w-[220px] rounded-md border border-border bg-popover px-3 py-2 text-left shadow-md z-20">
+                <div className="sm:hidden absolute top-full right-0 mt-2 min-w-[260px] max-w-[320px] rounded-md border border-border bg-popover px-3 py-3 pr-10 text-left shadow-md z-20">
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setIsMobileSubtitleOpen(false);
+                    }}
+                    className="absolute top-2 right-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-border bg-background text-foreground"
+                    aria-label="Fechar descrição"
+                    title="Fechar"
+                  >
+                    <X className="h-3.5 w-3.5" />
+                  </button>
                   <p className="text-xs text-popover-foreground leading-tight">{displaySubtitle}</p>
                 </div>
               ) : null}

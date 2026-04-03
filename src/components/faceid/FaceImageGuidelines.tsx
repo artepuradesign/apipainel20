@@ -80,7 +80,9 @@ const FaceImageGuidelines = ({ collapsed = false, onToggleCollapsed, onClose }: 
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {examples.map((item) => (
               <div key={item.title} className="rounded-md border bg-background/80 p-2 shadow-sm animate-fade-in">
-                <img src={item.src} alt={`Exemplo oficial: ${item.title}`} className="h-40 w-full rounded object-cover" loading="lazy" />
+                <div className="flex h-44 w-full items-center justify-center rounded bg-muted/20 p-1">
+                  <img src={item.src} alt={`Exemplo oficial: ${item.title}`} className="h-full w-full rounded object-contain" loading="lazy" />
+                </div>
                 <p className="mt-2 text-xs font-medium text-foreground">{item.title}</p>
               </div>
             ))}
